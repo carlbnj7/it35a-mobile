@@ -47,7 +47,7 @@ const Home: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonButton id="open-modal" expand="block">
-          Click to open
+          Open
         </IonButton>
         <p>{message}</p>
         <IonModal ref={modal} trigger="open-modal" onWillDismiss={(event) => onWillDismiss(event)}>
@@ -58,8 +58,8 @@ const Home: React.FC = () => {
               </IonButtons>
               <IonTitle>Welcome</IonTitle>
               <IonButtons slot="end">
-                <IonButton strong={true} onClick={() => 'Enter'}>
-                  Enter
+                <IonButton strong={true} onClick={() => confirm()}>
+                  Confirm
                 </IonButton>
               </IonButtons>
             </IonToolbar>
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
           <IonContent className="ion-padding">
             <IonItem>
               <IonInput
-                label="Type your name"
+                label=" your name"
                 labelPlacement="stacked"
                 ref={input}
                 type="text"

@@ -1,6 +1,6 @@
-import { IonButton, IonIcon, IonContent, IonHeader, IonItem, IonMenu, IonMenuToggle, IonPage, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons,IonIcon, IonContent, IonHeader, IonItem, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar, useIonRouter } from "@ionic/react";
 import { Redirect, Route } from "react-router";
-import { homeOutline, logOutOutline } from "ionicons/icons";
+import {homeOutline, logOutOutline} from "ionicons/icons";
 import Home from "./Home";
 
 const Menu: React.FC = () => {
@@ -8,8 +8,6 @@ const Menu: React.FC = () => {
     const path = [
         {name : 'Home' , url:'/app/home', icon:homeOutline}
     ]
-    
-      
     
    return(
     <IonPage>
