@@ -35,17 +35,15 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 
+
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-
-        <Route> exact path="/" component=(Template)</Route>"
-        <Route path="/app" component={Login}></Route>
+        <Route exact path="/" component={Login}></Route>
         <Route path="/app" component={Menu}></Route>
-
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
