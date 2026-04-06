@@ -1,82 +1,66 @@
-import { IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Home.css';
-import Menu from "./Menu";
-import ExploreContainer from '../components/ExploreContainer';
-
-import React, { useState, useRef } from 'react';
-import {
-  IonButtons,
-  IonButton,
-  IonModal,
-  IonItem,
-  IonInput,
-} from '@ionic/react';
-
-import { OverlayEventDetail } from '@ionic/core/components';
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonMenu, IonMenuButton, IonMenuToggle, IonPage,  IonRouterOutlet, IonSplitPane, IonTitle,IonToolbar } from "@ionic/react";
+import "./Home.css";
+import { Redirect, Route } from "react-router";
+import { homeOutline, logOutOutline } from "ionicons/icons";
 
 const Home: React.FC = () => {
-  const [message, setMessage] = useState('');
-  const modal = useRef<HTMLIonModalElement>(null);
-  const input = useRef<HTMLIonInputElement>(null);
-
-  const onWillDismiss = (event: CustomEvent<OverlayEventDetail>) => {
-    const { data } = event.detail;
-    if (data) {
-      setMessage(`Hello, ${data}!`);
-    }
-  };
-
-  const confirm = () => {
-    const name = input.current?.value;
-    if (name) {
-      setMessage(`Hello, ${name}!`);
-      modal.current?.dismiss();
-    }
-  };
+  const path = [
+    { name: "Home", url: "/app/home", icon: homeOutline },
+  ];
 
   return (
-     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-           <IonButtons>
-                    <IonMenuButton>
+    <IonPage>
+      <IonSplitPane contentId="main">
 
-                    </IonMenuButton>
-                </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-        <IonButton id="open-modal" expand="block">
-          Open
-        </IonButton>
-        <p>{message}</p>
-        <IonModal ref={modal} trigger="open-modal" onWillDismiss={(event) => onWillDismiss(event)}>
+        <IonMenu contentId="main">
           <IonHeader>
             <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
-              </IonButtons>
-              <IonTitle>Welcome</IonTitle>
-              <IonButtons slot="end">
-                <IonButton strong={true} onClick={() => confirm()}>
-                  Confirm
-                </IonButton>
-              </IonButtons>
+              <IonTitle>Menu</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <IonContent className="ion-padding">
-            <IonItem>
-              <IonInput
-                label="Enter your name"
-                labelPlacement="stacked"
-                ref={input}
-                type="text"
-                placeholder="Your name"
-              />
-            </IonItem>
+
+          <IonContent>
+            {path.map((item, index) => (
+              <IonMenuToggle key={index} autoHide={false}>
+                <IonItem routerLink={item.url} routerDirection="none" lines="none">
+                  <IonIcon slot="start" icon={item.icon} />
+                  <IonLabel>{item.name}</IonLabel>
+                </IonItem>
+              </IonMenuToggle>
+            ))}
+
+            <IonMenuToggle autoHide={false}>
+              <IonItem lines="none" button onClick={() => console.log("Logout")}>
+                <IonIcon slot="start" icon={logOutOutline} />
+                <IonLabel>Logout</IonLabel>
+              </IonItem>
+            </IonMenuToggle>
           </IonContent>
-        </IonModal>
-      </IonContent>
+        </IonMenu>
+
+        <IonRouterOutlet id="main">
+          <Route exact path="/app/home">
+            <IonPage>
+              <IonHeader>
+                <IonToolbar>
+                  <IonButtons slot="start">
+                    <IonMenuButton />
+                  </IonButtons>
+                  <IonTitle>Home</IonTitle>
+                </IonToolbar>
+              </IonHeader>
+              <IonContent className="ion-padding">
+                <h2>Welcome Home!</h2>
+              </IonContent>
+            </IonPage>
+          </Route>
+
+          <Route exact path="/app">
+            <Redirect to="/app/home" />
+          </Route>
+        </IonRouterOutlet>
+
+      </IonSplitPane>
     </IonPage>
   );
 };
