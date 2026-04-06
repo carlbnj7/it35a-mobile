@@ -1,26 +1,26 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from "@ionic/react"
-import ExploreContainer from '../components/fabComponents';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import ExploreContainer from '../components/Template';
 import './Home.css';
-import FabComponent from '../components/fabComponents';
-
 
 const Home: React.FC = () => {
   return (
-     <IonPage>
-          <IonHeader>
-             <IonToolbar>
-                <IonButtons>
-                   <IonMenuButton></IonMenuButton>
-                </IonButtons>
-                <IonTitle>Home</IonTitle>
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Home</IonTitle>
+
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Home</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen>
-
-        </IonContent>
-     </IonPage>
+        <ExploreContainer />
+      </IonContent>
+    </IonPage>
   );
-
 };
 
 export default Home;
