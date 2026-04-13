@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonButton, useIonRouter } from '@ionic/react';
+
+const Login: React.FC = () =>{
+  const navigation = useIonRouter();
+  const doLogin = () => {
+    navigation.push ('/app','forward','replace');
+  }
+      return(
+           <IonPage>
+              <IonHeader>
+                  <IonToolbar>
+                    <IonButtons>
+                    <IonMenuButton></IonMenuButton>
+                  </IonButtons>
+                  <IonTitle>Login</IonTitle>
+                </IonToolbar>
+              </IonHeader>
+              <IonContent fullscreen>
+                <IonButton expand="full" onClick={()=> doLogin() }>
+                  Login
+                </IonButton>
+              </IonContent>
+              </IonPage>
+      );
+
+};
+=======
 import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from "@ionic/react"
 
 const Login: React.FC = () => {
@@ -28,4 +56,5 @@ const Login: React.FC = () => {
 
 };
 
+>>>>>>> 789e582231d9de8c88e08feab8470ce8fbbb4fb8
 export default Login;

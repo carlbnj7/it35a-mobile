@@ -35,7 +35,10 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 789e582231d9de8c88e08feab8470ce8fbbb4fb8
 setupIonicReact();
 
 const App: React.FC = () => (
