@@ -1,45 +1,62 @@
-<<<<<<< HEAD
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/react';
+import React from 'react';
+import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonSplitPane, IonMenu, IonRouterOutlet, IonItem, IonIcon, IonMenuToggle, IonButton } from '@ionic/react';
+import { homeOutline, logOutOutline } from 'ionicons/icons';
+import { Route, Redirect } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
 
-const About: React.FC = () =>{
-      return(
-           <IonPage>
-              <IonHeader>
-                  <IonToolbar>
-                    <IonButtons>
-                    <IonMenuButton></IonMenuButton>
-                   <IonTitle>About</IonTitle>
-                  </IonButtons>
-                </IonToolbar>
-              </IonHeader>
-              <IonContent fullscreen>
-              </IonContent>
-              </IonPage>
-      );
+const Menu: React.FC = () =>{
 
-};
-export default About;
-=======
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from "@ionic/react"
+  const path = [
+    {name: 'Home', url: '/app/home', icon: homeOutline},
+     {name: 'About', url: '/app/home', icon: homeOutline}
+  ]
 
-const About: React.FC = () => {
-  return (
-     <IonPage>
+  return(
+    <IonPage>
+      <IonSplitPane contentId="main">
+
+        <IonMenu contentId="main">
           <IonHeader>
-             <IonToolbar>
-                <IonButtons>
-                   <IonMenuButton></IonMenuButton>
-                </IonButtons>
-                <IonTitle>About</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent fullscreen>
+            <IonToolbar> 
+              <IonTitle>
+                Menu
+              </IonTitle>
+            </IonToolbar>                    
+          </IonHeader>
 
-        </IonContent>
-     </IonPage>
+          <IonContent>
+            {path.map((item, index) => (
+              <IonMenuToggle key={index}>
+                <IonItem routerLink={item.url} routerDirection="forward">
+                  <IonIcon icon={item.icon} slot="start"></IonIcon>
+                  {item.name}
+                </IonItem>
+              </IonMenuToggle>
+            ))}
+
+            <IonButton routerLink="/" routerDirection="back" expand="full">
+              <IonIcon icon={logOutOutline} slot="start"></IonIcon>
+              Logout
+            </IonButton>
+
+          </IonContent>
+        </IonMenu>
+
+        <IonRouterOutlet id="main">
+          {/* FIXED: lowercase "home" */}
+          <Route exact path="/app/home" component={Home} />
+          <Route exact path="/app/about" component={About} />
+
+          <Route exact path="/app">
+            <Redirect to="/app/home" />
+          </Route>
+        </IonRouterOutlet>
+
+      </IonSplitPane>
+    </IonPage>
   );
 
 };
 
-export default About;
->>>>>>> 789e582231d9de8c88e08feab8470ce8fbbb4fb8
+export default Menu;

@@ -1,6 +1,5 @@
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-<<<<<<< HEAD
 import { Redirect, Route } from "react-router";
 import Feed from "./home-tabs/Feed";
 import Favorites from "./home-tabs/Favorites";
@@ -47,48 +46,3 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-=======
-import Feed from "./home-tabs/Feed";
-import { Redirect, Route } from "react-router";
-import Search from "./home-tabs/Search";
-import Favorites from "./home-tabs/Favorites";
-import { bookOutline, search, star } from "ionicons/icons";
-
-
-const Home: React.FC = () => {
-
-  const tabs = [
-    { name: "Feed", tab: "feed", url: "/app/home/feed",icon:bookOutline},
-    { name: "Search", tab: "search", url: "/app/home/search",icon:search},
-    { name: "Favorites", tab: "favorites", url: "/app/home/favorites",icon:star}
-  ]
-
-  return (
-    <IonReactRouter>
-      <IonTabs>
-      <IonTabBar slot="bottom">
-        <IonToolbar>
-          <IonTitle>Tabs</IonTitle>
-      </IonToolbar>
-      {/* */}
-      {tabs.map((item,index) => (
-        <IonTabButton key={index} tab={item.tab} href={item.url}>
-          <IonIcon icon={item.icon} />
-          <IonLabel>{item.name}</IonLabel>
-        </IonTabButton>
-      ))}
-      </IonTabBar>
-
-      <IonRouterOutlet>
-        <Route exact path="/app/home/feed" component={Feed} />
-        <Route exact path="/app/home">
-          <Redirect to="/app/home/feed"/>
-        </Route>
-      <Route exact path="/app/home/search" component={Search} />
-        <Route exact path="/app/home/favorites" component={Favorites} />
-    </IonRouterOutlet>
-    </IonTabs>
-    </IonReactRouter>
-  );
-};
->>>>>>> 789e582231d9de8c88e08feab8470ce8fbbb4fb8
