@@ -5,11 +5,11 @@ import { chatboxEllipsesOutline, shareOutline, thumbsUpOutline } from 'ionicons/
 const Feed: React.FC = () =>{
  
    const games = [
-          { name:'Minecraft' , subtitle:'Subtitle' },
-          { name:'Dragon Ball' },
-          { name:'GTA San Andreas' },
-          { name:'NBA 2k19' },
-          { name:'FIFA' },
+          { name:'Minecraft' , subtitle:'' },
+          { name:'Dragon Ball' , subtitle:'' },
+          { name:'GTA San Andreas' , subtitle:''  },
+          { name:'NBA 2k19' , subtitle:''  },
+          { name:'FIFA' , subtitle:''  },
    ];
 
       return(
