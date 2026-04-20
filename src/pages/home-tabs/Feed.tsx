@@ -5,12 +5,12 @@ import { chatboxEllipsesOutline, shareOutline, thumbsUpOutline } from 'ionicons/
 const Feed: React.FC = () =>{
  
    const games = [
-          {name:'Minecraft'},
-          {name:'Dragon Ball'},
-          {name:'GTA San Andreas'},
-          {name:'NBA 2k19'},
-          {name:'FIFA'}
-   ]
+          { name:'Minecraft' , subtitle:'Subtitle' },
+          { name:'Dragon Ball' },
+          { name:'GTA San Andreas' },
+          { name:'NBA 2k19' },
+          { name:'FIFA' },
+   ];
 
       return(
            <IonPage>
@@ -36,8 +36,8 @@ const Feed: React.FC = () =>{
                                 </IonCol>
                                 <IonCol>
                                      <IonCardHeader>
-                                          <IonCardTitle>Card Title</IonCardTitle>
-                                          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                                          <IonCardTitle>{item.name}</IonCardTitle>
+                                          <IonCardSubtitle>{item.subtitle}</IonCardSubtitle>
                                      </IonCardHeader>
                                     <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
                                </IonCol>
